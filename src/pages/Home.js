@@ -1,9 +1,7 @@
 import React from 'react';
-import './App.css';
-
 import Header from './Header';
 
-class App extends React.Component {
+class Home extends React.Component {
 
   constructor(props){
     super(props);
@@ -11,11 +9,11 @@ class App extends React.Component {
   
   render() {
     return (
-      <div className="app">
-        <Home></Home>
+      <div className="home">
+        <Header></Header>
       </div>
     )
   }
 }
 
-export default App;
+export default Home;
