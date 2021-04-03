@@ -1,12 +1,12 @@
 import React from 'react';
 import Body from '../components/Body'
 
-function Home(props) {  
+function About(props) {
   return (
-    <Body className="home">
-      Home page
+    <Body className="about">
+      About page
     </Body>
   )
 }
 
-export default Home;
+export default About;

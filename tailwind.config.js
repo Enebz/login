@@ -4,16 +4,33 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        eggshell: "#FAF3DD",
-        coral: "#5E6472",
-        cinnabear: "#D64933",
+        eggshell: {
+          light: "#FCF9ED",
+          normal: "#FAF3DD",
+          darker: "#F7ECCA",
+          dark: "#F3E6BA"
+        },
+
+        coral: {
+          light: "#788091",
+          normal: "#5E6472",
+          dark: "#494E5A"
+        },
+        cinnabear: {
+          light: "#DD6755",
+          normal: "#DA5844",
+          dark: "#D64933"
+        },
         mint: "#4FB286",
       },
     },
 
   },
   variants: {
-    extend: {},
+    extend: {
+      backgroundColor: ['disabled'],
+      cursor: ['disabled']
+    }
   },
   plugins: [],
 }
