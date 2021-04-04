@@ -6,7 +6,8 @@ const init = {
   user: { 
     loggedIn: false,
     loading: true,
-    username: ""
+    username: "",
+    dev: false,
   }
 }
 

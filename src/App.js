@@ -7,7 +7,7 @@ import Authentication from './api/authentication'
 import { Context } from './stores/Store'
 
 
-import Header from './components/Header';
+import Navigation from './components/Navigation';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import About from './pages/About';
@@ -23,6 +23,13 @@ function App(props) {
 
     async function checkLogin() {
       try {
+        if (process.env.NODE_ENV === "development") {
+          dispatch({
+            type: "USER",
+            command: "LOGIN_DEV",
+          });
+          return;
+        }
         const result = await Authentication.isLoggedIn()  
         if (result && result.success) {
           dispatch({
@@ -48,21 +55,19 @@ function App(props) {
 
     checkLogin();
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
-
-  console.log(state)
   
   return (
     <Router>
       <div className="app">
-        <Header></Header>
+        <Navigation /> 
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/about" component={About} />
           <Route exact path="/login">
-            {state.user.loggedIn === true ? <Redirect to="/"/> : <Login /> }
+            {state.user.loggedIn === true ? <Redirect to="/profile"/> : <Login /> }
           </Route>
           <Route exact path="/register">
-            {state.user.loggedIn === true ? <Redirect to="/"/> : <Register /> }
+            {state.user.loggedIn === true ? <Redirect to="/profile"/> : <Register /> }
           </Route>
           <Route exact path="/profile">
             {state.user.loggedIn === true ? <Profile /> : <Redirect to="/login"/>}

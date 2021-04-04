@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import hooks from '../utils/hooks'
+
 import { FaChevronDown, FaHome, FaInfoCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import ProfileWidget from './ProfileWidget';
@@ -23,9 +25,16 @@ function Links(props) {
   )
 }
 
-function Header(props) {
+function Navigation(props) {
 
   const [dropdown, setDropdown] = useState(false)
+
+  const dropdownRef = useRef(null);
+  hooks.useOutsideAlerter(dropdownRef, handleClickOutside);
+
+  function handleClickOutside() {
+    setDropdown(false);
+  }
   
   function toggleDropdown() {
     setDropdown(!dropdown);
@@ -49,7 +58,7 @@ function Header(props) {
           />
 
           {/* Dropdown */}
-          <div className="relative">
+          <div ref={dropdownRef} className="relative">
             {/* Dropdown button */}
             <button onClick={toggleDropdown} className="">
               <FaChevronDown className="text-xl hover:text-coral-light" />
@@ -82,4 +91,4 @@ function Header(props) {
   )
 }
 
-export default Header;
+export default Navigation;

@@ -9,12 +9,10 @@ function ProfileWidget(props) {
 
   if (!state.user.loggedIn) {
     return (
-      <div className={`flex items-center ${props.className}`}>
-      <div className="flex-col pl-4">
+      <div className={`${props.className} flex flex-col items-center`}>
           <p className="text-black font-extrabold">Not signed in</p>
           <p className="text-coral-normal"><Link to="/login">Log in</Link> or <Link to="/signup">Sign up</Link></p>
       </div>
-    </div>
     );
   }
   return (

@@ -7,9 +7,12 @@ import { Context } from '../stores/Store'
 import { FaEnvelope, FaLock, FaSignInAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Body from '../components/Body'
-import Button from '../components/Button';
+import Button from '../components/input/buttons/Button';
 import ErrorLabel from '../components/ErrorLabel';
 import InputBar from '../components/InputBar';
+import Card from '../components/Card';
+import Center from '../components/Center';
+import CardItem from '../components/CardItem';
 
 
 function Login(props) {
@@ -99,16 +102,16 @@ function Login(props) {
   
   return (
     <Body className="login">
-      <div className="flex items-center justify-center">
-        <div className="flex flex-col w-full sm:w-96 p-4 bg-eggshell-darker shadow rounded-md divide-y-2 divide-eggshell-dark">
+      <Center>
+        <Card className="w-full sm:w-96">
 
           {/* Title */}
-          <div className="flex flex-col items-center pb-2">
-            <h1 className="text-2xl font-black">Log in</h1>
-          </div>
+          <CardItem first={true}>
+            <h1 className="text-2xl text-center font-black">Log in</h1>
+          </CardItem>
 
           {/* Inputs */}
-          <div className="py-2">
+          <CardItem>
             <form>
               {/* Email input */}
               <InputBar 
@@ -118,23 +121,23 @@ function Login(props) {
                 placeholder="example@domain.com"
                 autoComplete="email"
                 icon={
-                  <FaEnvelope/>
-                }
-                iconContainerClassName={
-                  emailFocused && email.length > 0 ? 
-                  (
-                    emailValid ? 
-                    "text-green-500" : 
-                    "text-cinnabear-normal"
-                  ) : 
-                  "text-coral-normal"
+                  <FaEnvelope 
+                    className={
+                      emailFocused && email.length > 0 ? 
+                      (
+                        emailValid ? 
+                        "text-green-500" : 
+                        "text-cinnabear-normal"
+                      ) : 
+                      "text-coral-normal"
+                    }
+                  />
                 }
                 onChange={onEmailChange}
                 onFocus={onEmailFocus}
                 onBlur={onEmailBlur}
                 value={email}
-                className="flex flex-col w-full"
-                barContainerClassName="bg-eggshell-light text-coral-normal"
+                className="w-full"
               />
 
               {/* Password input */}
@@ -145,52 +148,57 @@ function Login(props) {
                 placeholder="Password#123"
                 autoComplete="current-password"
                 icon={
-                  <FaLock/>
-                }
-                iconContainerClassName={
-                  passwordFocused && password.length > 0 ? 
-                  (
-                    passwordValid ? 
-                    "text-green-500" : 
-                    "text-cinnabear-normal"
-                  ) : 
-                  "text-coral-normal"
+                  <FaLock 
+                    className={
+                      passwordFocused && password.length > 0 ? 
+                      (
+                        passwordValid ? 
+                        "text-green-500" : 
+                        "text-cinnabear-normal"
+                      ) : 
+                      "text-coral-normal"
+                    }
+                  />
                 }
                 onChange={onPasswordChange}
                 onFocus={onPasswordFocus}
                 onBlur={onPasswordBlur}
                 value={password}
-                className="flex flex-col w-full"
-                barContainerClassName="bg-eggshell-light text-coral-normal"
+                className="w-full"
               />
             </form>
-          </div>
+          </CardItem>
 
           {/* Error */}
-          <ErrorLabel className="py-2" label={error} />
+          <CardItem>
+            <ErrorLabel label={error} />
+          </CardItem>
+          
 
           {/* Forgot password */}
-          <div className="py-2">
+          <CardItem>
             <Link to="/forgotpassword">Forgot password?</Link>
-          </div>
+          </CardItem>
 
           {/* Login button */}
-          <div className="py-2">
-            <Button disabled={!(emailValid && passwordValid) || loggingIn} onClick={onLoginClick}>
-              <div className="flex items-center justify-center">
-                <p>Log in</p>
-                <FaSignInAlt />
-              </div>
+          <CardItem>
+            <Button 
+              disabled={!(emailValid && passwordValid) || loggingIn} 
+              onClick={onLoginClick}
+              rightIcon={<FaSignInAlt />}
+              className="w-full" 
+            >
+              Log in
             </Button>
-          </div>
+          </CardItem>
 
           {/* Sign up */}
-          <div className="py-2 text-coral-light">
+          <CardItem className="text-coral-light">
             <Link to="/signup">Or sign up...</Link>
-          </div>
+          </CardItem>
 
-        </div>
-      </div>
+        </Card>
+      </Center>
     </Body>
   )
 }

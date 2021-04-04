@@ -22,6 +22,15 @@ const UserStoreReducer = (state, action) => {
         username: ""
       }
 
+      case "LOGIN_DEV":
+        return {
+          ...state,
+          loggedIn: true,
+          loading: false,
+          username: "dev_user",
+          dev: true
+        }
+
     case "ERROR":
       return {
         ...state,

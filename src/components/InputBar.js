@@ -12,10 +12,10 @@ function InputbarLabel(props) {
 
 function InputBar(props) {
   return (
-    <div className={`inputbar ${props.className}`}>
+    <div className={`inputbar ${props.className} flex flex-col`}>
       <InputbarLabel label={props.label} />
-      <div className={`${props.barContainerClassName} flex items-center rounded-md`}>
-        <div className={`transition-all duration-200 ease-in-out px-2 ${props.iconContainerClassName}`}>
+      <div className={`flex items-center rounded-md bg-eggshell-light text-coral-normal`}>
+        <div className={`transition-all duration-200 ease-in-out px-2`}>
           {props.icon}
         </div>
         <div className="w-full">

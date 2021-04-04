@@ -28,8 +28,9 @@ module.exports = {
   },
   variants: {
     extend: {
-      backgroundColor: ['disabled'],
-      cursor: ['disabled']
+      backgroundColor: ['disabled', 'active'],
+      textColor: ['active'],
+      cursor: ['disabled'],
     }
   },
   plugins: [],
