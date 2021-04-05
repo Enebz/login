@@ -3,8 +3,8 @@ import ButtonBase from './ButtonBase'
 
 function IconButton(props) {
 
-  const hollow = "text-coral-normal hover:text-coral-light active:text-coral-dark"
-  const filled = "bg-coral-normal hover:bg-coral-light active:bg-coral-dark text-eggshell-normal"
+  const hollow = "shadow-md rounded-full bg-eggshell-light text-coral-normal hover:text-coral-light active:text-coral-dark"
+  const filled = "shadow-md rounded-full bg-coral-normal hover:bg-coral-light active:bg-coral-dark text-eggshell-normal"
 
   function getType() {
     switch (props.type) {
@@ -21,11 +21,11 @@ function IconButton(props) {
 
   return (
     <ButtonBase
-      disabled={props.disabled} 
+      disabled={props.disabled}
       onClick={props.onClick}
       onMouseDown={props.onMouseDown}
       onMouseUp={props.onMouseUp}
-      className={`${props.className} p-2 shadow-md rounded-full ${getType()}`}
+      className={`${props.className} p-2 ${props.transparent ? "bg-transparent" : getType()}`}
     >
       {props.children}
         

@@ -1,21 +1,37 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
 import Authentication from '../api/authentication'
 import { Context } from '../stores/Store'
 
-import { FaLowVision, FaSignOutAlt } from 'react-icons/fa';
+import { FaEnvelope, FaLock, FaLowVision, FaSignOutAlt } from 'react-icons/fa';
 
-import Body from '../components/Body'
-import Button from '../components/input/buttons/Button'
-import IconButton from '../components/input/buttons/IconButton'
-import Header from '../components/text/Header';
-import Text from '../components/text/Text';
-import TextField from '../components/input/fields/TextField';
+import Body from '../theme/layout/Body'
+import Button from '../theme/input/buttons/Button'
+import IconButton from '../theme/input/buttons/IconButton'
+import Header from '../theme/text/Header';
+import Text from '../theme/text/Text';
+import TextField from '../theme/input/fields/TextField';
+import Switch from '../theme/input/toggle/Switch';
+import ErrorLabel from '../theme/utils/labels/ErrorLabel';
+import SuccessLabel from '../theme/utils/labels/SuccessLabel';
+import InfoLabel from '../theme/utils/labels/InfoLabel';
+import Card from '../theme/card/Card';
+
 
 
 function Profile(props) {
 
   const [state, dispatch] = useContext(Context)
+
+  const [checked, setChecked] = useState({
+    a: true,
+    b: false,
+    c: false,
+  });
+
+  function handleSwitchChange(id) {
+    setChecked({...checked, [id]: !checked[id]})
+  }
 
   async function onLogOutClick() {
     // POST Login
@@ -45,19 +61,19 @@ function Profile(props) {
   }
 
   return (
-    <Body className="home">
+    <Body className="home space-y-2">
 
       <Header type={1}>
-        Buttons
+        Lorem Ipsum
       </Header>
       <Header type={2}>
-        Buttons
+        Lorem Ipsum
       </Header>
       <Header type={3}>
-        Buttons
+        Lorem Ipsum
       </Header>
       <Header type={4}>
-        Buttons
+        Lorem Ipsum
       </Header>
 
       <Text>
@@ -68,7 +84,7 @@ function Profile(props) {
       </Text>
 
       <Button 
-        //onClick={onLogOutClick}
+        onClick={onLogOutClick}
         rightIcon={<FaSignOutAlt />}
       >
         Log out
@@ -78,12 +94,67 @@ function Profile(props) {
         <FaSignOutAlt />
       </IconButton>
 
+      <IconButton
+        type="filled"
+      >
+        <FaSignOutAlt />
+      </IconButton>
+
       <TextField 
         id="text-1"
+        type="email"
+        placeholder="Email..."
+        icon={<FaEnvelope/>}
+      />
+
+      <TextField 
+        id="pass-1"
         type="password"
         placeholder="Write..."
-        icon={<FaLowVision/>}
+        icon={<FaLock/>}
       />
+
+      <Switch 
+        id="a"
+        toggled={checked.a}
+        onChange={handleSwitchChange}
+      />
+
+      <Switch 
+        id="b"
+        toggled={checked.b}
+        onChange={handleSwitchChange}
+      />
+
+      <Switch 
+        id="c"
+        disabled={true}
+        toggled={checked.c}
+        onChange={handleSwitchChange}
+      />
+
+      <InfoLabel>
+        This is some info!
+      </InfoLabel>
+
+      <SuccessLabel>
+        You succeeded!
+      </SuccessLabel>
+
+      <ErrorLabel>
+        You found an error!
+      </ErrorLabel>
+
+      <Card divider={true}>
+        <Header type={1}>
+          Card title
+        </Header>
+
+        <ErrorLabel>
+          You found another error!
+        </ErrorLabel>
+      </Card>
+
     </Body>
   )
 }

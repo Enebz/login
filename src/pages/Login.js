@@ -6,13 +6,12 @@ import { Context } from '../stores/Store'
 
 import { FaEnvelope, FaLock, FaSignInAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import Body from '../components/Body'
-import Button from '../components/input/buttons/Button';
-import ErrorLabel from '../components/ErrorLabel';
-import InputBar from '../components/InputBar';
-import Card from '../components/Card';
-import Center from '../components/Center';
-import CardItem from '../components/CardItem';
+import Body from '../theme/layout/Body'
+import Button from '../theme/input/buttons/Button';
+import ErrorLabel from '../theme/utils/labels/ErrorLabel';
+import TextField from '../theme/input/fields/TextField';
+import Card from '../theme/card/Card';
+import Center from '../theme/utils/positioning/Center';
 
 
 function Login(props) {
@@ -103,99 +102,90 @@ function Login(props) {
   return (
     <Body className="login">
       <Center>
-        <Card className="w-full sm:w-96">
+        <Card className="w-full sm:w-96 divide-y-2 space-y-2">
 
           {/* Title */}
-          <CardItem first={true}>
-            <h1 className="text-2xl text-center font-black">Log in</h1>
-          </CardItem>
+          <h1 className="text-2xl text-center font-black">Log in</h1>
 
           {/* Inputs */}
-          <CardItem>
-            <form>
-              {/* Email input */}
-              <InputBar 
-                label="Email"
-                type="email"
-                name="email"
-                placeholder="example@domain.com"
-                autoComplete="email"
-                icon={
-                  <FaEnvelope 
-                    className={
-                      emailFocused && email.length > 0 ? 
-                      (
-                        emailValid ? 
-                        "text-green-500" : 
-                        "text-cinnabear-normal"
-                      ) : 
-                      "text-coral-normal"
-                    }
-                  />
-                }
-                onChange={onEmailChange}
-                onFocus={onEmailFocus}
-                onBlur={onEmailBlur}
-                value={email}
-                className="w-full"
-              />
+          <form className="space-y-2">
+            {/* Email input */}
+            <TextField 
+              id="email"
+              type="email"
+              placeholder="Email..."
+              icon={
+                <FaEnvelope 
+                  className={
+                    emailFocused && email.length > 0 ? 
+                    (
+                      emailValid ? 
+                      "text-green-500" : 
+                      "text-cinnabear-normal"
+                    ) : 
+                    "text-coral-normal"
+                  }
+                />
+              }
+              onChange={onEmailChange}
+              onFocus={onEmailFocus}
+              onBlur={onEmailBlur}
+              value={email}
+              className="w-full"
+            />
 
-              {/* Password input */}
-              <InputBar 
-                label="Password"
-                type="password"
-                name="password"
-                placeholder="Password#123"
-                autoComplete="current-password"
-                icon={
-                  <FaLock 
-                    className={
-                      passwordFocused && password.length > 0 ? 
-                      (
-                        passwordValid ? 
-                        "text-green-500" : 
-                        "text-cinnabear-normal"
-                      ) : 
-                      "text-coral-normal"
-                    }
-                  />
-                }
-                onChange={onPasswordChange}
-                onFocus={onPasswordFocus}
-                onBlur={onPasswordBlur}
-                value={password}
-                className="w-full"
-              />
-            </form>
-          </CardItem>
+            {/* Password input */}
+            <TextField 
+              id="password"
+              type="password"
+              placeholder="Password..."
+              icon={
+                <FaLock 
+                  className={
+                    passwordFocused && password.length > 0 ? 
+                    (
+                      passwordValid ? 
+                      "text-green-500" : 
+                      "text-cinnabear-normal"
+                    ) : 
+                    "text-coral-normal"
+                  }
+                />
+              }
+              onChange={onPasswordChange}
+              onFocus={onPasswordFocus}
+              onBlur={onPasswordBlur}
+              value={password}
+              className="w-full"
+            />
+          </form>
 
           {/* Error */}
-          <CardItem>
-            <ErrorLabel label={error} />
-          </CardItem>
-          
+          {() => {
+            if (error) {
+              return(
+                <ErrorLabel className="w-full">
+                  {error}
+                </ErrorLabel>
+              )
+            }
+          }}
 
           {/* Forgot password */}
-          <CardItem>
-            <Link to="/forgotpassword">Forgot password?</Link>
-          </CardItem>
+          <Link to="/forgotpassword">Forgot password?</Link>
 
           {/* Login button */}
-          <CardItem>
-            <Button 
-              disabled={!(emailValid && passwordValid) || loggingIn} 
-              onClick={onLoginClick}
-              rightIcon={<FaSignInAlt />}
-              className="w-full" 
-            >
-              Log in
-            </Button>
-          </CardItem>
+          <Button 
+            disabled={!(emailValid && passwordValid) || loggingIn} 
+            onClick={onLoginClick}
+            rightIcon={<FaSignInAlt />}
+            className="w-full" 
+          >
+            Log in
+          </Button>
 
           {/* Sign up */}
-          <CardItem className="text-coral-light">
-            <Link to="/signup">Or sign up...</Link>
-          </CardItem>
+          <Link to="/signup">Or sign up...</Link>
 
         </Card>
       </Center>

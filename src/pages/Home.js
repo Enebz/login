@@ -1,5 +1,5 @@
 import React from 'react';
-import Body from '../components/Body'
+import Body from '../theme/layout/Body'
 
 function Home(props) {  
   return (

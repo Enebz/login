@@ -5,6 +5,9 @@ import { FaChevronDown, FaHome, FaInfoCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import ProfileWidget from './ProfileWidget';
 
+import Header from '../theme/text/Header';
+import IconButton from '../theme/input/buttons/IconButton';
+
 
 function Links(props) {
   return (
@@ -41,13 +44,11 @@ function Navigation(props) {
   }
 
   return (
-    <div className="header">
+    <div className="nav">
       <nav className="flex items-center justify-between flex-wrap text-eggshell-normal bg-coral-normal py-4 px-4">
 
         {/* Logo */}
-        <div>
-          <h1 className="text-2xl font-black ">Title</h1>
-        </div>
+        <Header type={3}>Title</Header>
 
         {/* Links */}
         <div className="flex items-center gap-6">
@@ -60,9 +61,13 @@ function Navigation(props) {
           {/* Dropdown */}
           <div ref={dropdownRef} className="relative">
             {/* Dropdown button */}
-            <button onClick={toggleDropdown} className="">
-              <FaChevronDown className="text-xl hover:text-coral-light" />
-            </button>
+            <IconButton
+              onClick={toggleDropdown}
+              transparent={true}
+              className="text-eggshell-normal"
+            >
+              <FaChevronDown />
+            </IconButton>
 
             {/* Dropdown box */}
             <div className={`${dropdown ? "" : "hidden"} absolute right-0 mt-4 origin-top-right w-64`}>
