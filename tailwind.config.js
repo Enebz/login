@@ -7,8 +7,9 @@ module.exports = {
         eggshell: {
           light: "#FCF9ED",
           normal: "#FAF3DD",
-          darker: "#F7ECCA",
-          dark: "#F3E6BA"
+          darker: "#F3E6BA",
+          dark: "#ecd892",
+          darkest: "#E4C864"
         },
 
         coral: {

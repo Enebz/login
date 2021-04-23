@@ -1,9 +1,11 @@
 {
-  "name": "the-wall-of-internet",
+  "name": "frisbee-golf",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.1.1",
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "@tailwindcss/postcss7-compat": "^2.0.4",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -20,7 +22,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "set PORT=25565 && craco start",
+    "start": "set PORT=3000 && craco start",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject"

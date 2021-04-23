@@ -29,7 +29,8 @@ function Button(props) {
       onClick={props.onClick}
       onMouseDown={props.onMouseDown}
       onMouseUp={props.onMouseUp}
-      className={`${props.className} flex items-center justify-center p-2 shadow-md rounded-md bg-coral-normal hover:bg-coral-light active:bg-coral-dark text-eggshell-normal`}
+      className={props.className}
+      innerClassName={`${props.innerClassName} flex items-center justify-center p-2 shadow-md rounded-md bg-coral-normal hover:bg-coral-light active:bg-coral-dark text-eggshell-normal`}
     >
       {leftIcon(props.leftIcon)}
       {props.children}

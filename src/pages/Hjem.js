@@ -1,12 +1,12 @@
 import React from 'react';
 import Body from '../theme/layout/Body'
 
-function Home(props) {  
+function Hjem(props) {  
   return (
-    <Body className="home">
-      Home page
+    <Body className="hjem">
+      Hjem
     </Body>
   )
 }
 
-export default Home;
+export default Hjem;

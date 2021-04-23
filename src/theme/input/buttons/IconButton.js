@@ -25,7 +25,8 @@ function IconButton(props) {
       onClick={props.onClick}
       onMouseDown={props.onMouseDown}
       onMouseUp={props.onMouseUp}
-      className={`${props.className} p-2 ${props.transparent ? "bg-transparent" : getType()}`}
+      className={props.className}
+      innerClassName={`${props.innerClassName} p-2 ${props.transparent ? "bg-transparent" : getType()}`}
     >
       {props.children}
         

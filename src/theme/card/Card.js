@@ -2,13 +2,9 @@ import React from 'react'
 
 function Card(props) {
 
-  if (props.divider === null) {
-    props.divider = true;
-  }
-
   return (
     <div 
-      className={`card ${props.className} flex flex-col p-4 shadow-md rounded-md ${props.divider ? "divide-y-2 divide-eggshell-dark" : ""} bg-eggshell-dark`}
+      className={`card ${props.className} flex flex-col shadow-md rounded-md ${props.divider ? "divide-y-2 divide-eggshell-darker" : ""} bg-eggshell-dark`}
     >
       {props.children}
     </div>

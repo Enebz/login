@@ -3,7 +3,6 @@ import hooks from '../utils/hooks'
 
 import { FaChevronDown, FaHome, FaInfoCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import ProfileWidget from './ProfileWidget';
 
 import Header from '../theme/text/Header';
 import IconButton from '../theme/input/buttons/IconButton';
@@ -15,13 +14,13 @@ function Links(props) {
       <Link to="/">
         <div className={props.itemClassName}>
           <FaHome />
-          <p className="pl-2">Home</p>
+          <p className="pl-2">Hjem</p>
         </div>
       </Link>
-      <Link to="/about">
+      <Link to="/bestill">
         <div className={props.itemClassName}>
           <FaInfoCircle />
-          <p className="pl-2">About</p>
+          <p className="pl-2">Bestill</p>
         </div>
       </Link>
     </div>
@@ -48,7 +47,7 @@ function Navigation(props) {
       <nav className="flex items-center justify-between flex-wrap text-eggshell-normal bg-coral-normal py-4 px-4">
 
         {/* Logo */}
-        <Header type={3}>Title</Header>
+        <Header type={3}>Frisbee Golf</Header>
 
         {/* Links */}
         <div className="flex items-center gap-6">
@@ -72,9 +71,6 @@ function Navigation(props) {
             {/* Dropdown box */}
             <div className={`${dropdown ? "" : "hidden"} absolute right-0 mt-4 origin-top-right w-64`}>
               <div className="bg-eggshell-normal rounded-md shadow p-2 divide-y-2 divide-eggshell-dark">
-                
-                {/* Profile widget */}
-                <ProfileWidget className="py-2" />
 
                 {/* Links */}
                 <Links 

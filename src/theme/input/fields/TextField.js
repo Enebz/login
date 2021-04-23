@@ -12,7 +12,7 @@ function TextField(props) {
   
 
   return (
-    <div className={`${props.className} flex items-center w-full sm:w-64 shadow-md rounded-md bg-eggshell-light text-coral-normal`}>
+    <div className={`${props.className} flex items-center shadow-md rounded-md bg-eggshell-light text-coral-normal`}>
       <div className="transition-all duration-200 ease-in-out px-2">
         {props.icon}
       </div>
